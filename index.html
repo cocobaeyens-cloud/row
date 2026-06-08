@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#050506">
-<title>Tableau de bord</title>
+<title>Dashboard</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="lock.js" defer></script>
 <script src="sync.js" defer></script>
@@ -67,7 +67,7 @@ body::after {
   padding-top: 24px;
 }
 
-/* ===== En-tête — titre + engrenage ===== */
+/* ===== Page header — title + gear ===== */
 .page-header {
   display: flex;
   align-items: center;
@@ -102,7 +102,7 @@ body::after {
 .gear-btn:active .gear-icon { transform: rotate(35deg); }
 .gear-icon { transition: transform 0.22s ease; display: block; }
 
-/* ===== Grille Bento ===== */
+/* ===== Bento Grid ===== */
 .bento {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -188,7 +188,7 @@ body::after {
   .tile.big, .tile.wide { grid-column: span 1; grid-row: span 1; }
 }
 
-/* ===== Fond de la modale ===== */
+/* ===== Modal backdrop ===== */
 .modal-bg {
   display: none;
   position: fixed; inset: 0; z-index: 200;
@@ -200,7 +200,7 @@ body::after {
 }
 .modal-bg.show { display: flex; }
 
-/* ===== Panneau de la modale ===== */
+/* ===== Modal panel ===== */
 .modal {
   position: relative;
   width: 100%; max-width: 460px;
@@ -233,7 +233,7 @@ body::after {
 }
 .modal-close:hover { background: rgba(255,255,255,0.09); color: var(--text-primary); }
 
-/* ===== Champs de paramètres ===== */
+/* ===== Settings fields ===== */
 .settings-field { margin-bottom: 16px; }
 .settings-label {
   display: block;
@@ -263,7 +263,7 @@ body::after {
   color: var(--text-tertiary); white-space: nowrap; flex-shrink: 0;
 }
 
-/* ===== Sélecteur segmenté ===== */
+/* ===== Segmented toggle ===== */
 .seg-toggle {
   display: flex; flex-shrink: 0;
   background: rgba(0,0,0,0.32);
@@ -282,7 +282,7 @@ body::after {
   background: rgba(255,255,255,0.13); color: var(--text-primary);
 }
 
-/* ===== Bouton Enregistrer ===== */
+/* ===== Save button ===== */
 .settings-save {
   width: 100%; padding: 13px 20px;
   border: 0; border-radius: 13px;
@@ -301,13 +301,13 @@ body::after {
   color: #0A2318;
 }
 
-/* ===== Séparateur ===== */
+/* ===== Divider ===== */
 .settings-divider {
   height: 1px; margin: 22px 0;
   background: linear-gradient(90deg, transparent, rgba(255,255,255,0.09), transparent);
 }
 
-/* ===== Carte WHOOP ===== */
+/* ===== WHOOP card ===== */
 .whoop-card {
   background: rgba(255,255,255,0.03);
   border: 1px solid rgba(255,255,255,0.07);
@@ -368,8 +368,8 @@ body::after {
 <div class="page">
 
   <div class="page-header">
-    <h1 class="dash-title">Tableau de bord</h1>
-    <button class="gear-btn" id="gearBtn" aria-label="Paramètres" type="button">
+    <h1 class="dash-title">Dashboard</h1>
+    <button class="gear-btn" id="gearBtn" aria-label="Settings" type="button">
       <svg class="gear-icon" width="19" height="19" viewBox="0 0 24 24" fill="none"
            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <circle cx="12" cy="12" r="3"/>
@@ -392,9 +392,9 @@ body::after {
       <span class="tile-num">·01</span>
       <span class="tile-emoji">🏠</span>
       <span class="tile-spacer"></span>
-      <div class="tile-title">Accueil</div>
+      <div class="tile-title">Main</div>
       <div class="tile-footer">
-        <span class="tile-sub">Objectifs & plan du jour</span>
+        <span class="tile-sub">Goals & daily plan</span>
         <span class="tile-arrow">→</span>
       </div>
     </a>
@@ -405,7 +405,7 @@ body::after {
       <span class="tile-spacer"></span>
       <div class="tile-title">Fitness</div>
       <div class="tile-footer">
-        <span class="tile-sub">Séances, splits, entraînements</span>
+        <span class="tile-sub">Workouts, splits, sessions</span>
         <span class="tile-arrow">→</span>
       </div>
     </a>
@@ -414,9 +414,9 @@ body::after {
       <span class="tile-num">·03</span>
       <span class="tile-emoji">💊</span>
       <span class="tile-spacer"></span>
-      <div class="tile-title">Santé</div>
+      <div class="tile-title">Health</div>
       <div class="tile-footer">
-        <span class="tile-sub">Compléments & vitalité</span>
+        <span class="tile-sub">Supplements & vitals</span>
         <span class="tile-arrow">→</span>
       </div>
     </a>
@@ -425,9 +425,9 @@ body::after {
       <span class="tile-num">·04</span>
       <span class="tile-emoji">💧</span>
       <span class="tile-spacer"></span>
-      <div class="tile-title">Eau</div>
+      <div class="tile-title">Water</div>
       <div class="tile-footer">
-        <span class="tile-sub">Hydratation</span>
+        <span class="tile-sub">Hydration</span>
         <span class="tile-arrow">→</span>
       </div>
     </a>
@@ -438,7 +438,7 @@ body::after {
       <span class="tile-spacer"></span>
       <div class="tile-title">Finance</div>
       <div class="tile-footer">
-        <span class="tile-sub">Patrimoine & dépenses</span>
+        <span class="tile-sub">Net worth & spending</span>
         <span class="tile-arrow">→</span>
       </div>
     </a>
@@ -446,18 +446,18 @@ body::after {
   </div>
 </div>
 
-<!-- ===== Modale de paramètres ===== -->
-<div class="modal-bg" id="settingsBg" role="dialog" aria-modal="true" aria-label="Mes données">
+<!-- ===== Settings modal ===== -->
+<div class="modal-bg" id="settingsBg" role="dialog" aria-modal="true" aria-label="Your Data">
   <div class="modal" id="settingsModal">
 
     <div class="modal-header">
-      <span class="modal-title">Mes données</span>
-      <button class="modal-close" id="settingsClose" aria-label="Fermer" type="button">×</button>
+      <span class="modal-title">Your Data</span>
+      <button class="modal-close" id="settingsClose" aria-label="Close" type="button">×</button>
     </div>
 
-    <!-- Taille -->
+    <!-- Height -->
     <div class="settings-field">
-      <label class="settings-label">Taille</label>
+      <label class="settings-label">Height</label>
       <div class="settings-row">
         <div class="settings-row" id="heightCmWrap" style="flex:1;min-width:0">
           <input class="settings-input" id="heightCm" type="number"
@@ -479,9 +479,9 @@ body::after {
       </div>
     </div>
 
-    <!-- Poids -->
+    <!-- Weight -->
     <div class="settings-field">
-      <label class="settings-label">Poids</label>
+      <label class="settings-label">Weight</label>
       <div class="settings-row">
         <input class="settings-input" id="weightVal" type="number"
                min="20" max="500" step="0.1" placeholder="75" inputmode="decimal">
@@ -493,70 +493,70 @@ body::after {
       </div>
     </div>
 
-    <!-- Âge -->
+    <!-- Age -->
     <div class="settings-field">
-      <label class="settings-label">Âge</label>
+      <label class="settings-label">Age</label>
       <div class="settings-row">
         <input class="settings-input" id="ageVal" type="number"
                min="10" max="120" placeholder="25" inputmode="numeric" style="max-width:120px">
-        <span class="settings-unit">ans</span>
+        <span class="settings-unit">yrs</span>
       </div>
     </div>
 
-    <!-- Sexe -->
+    <!-- Sex -->
     <div class="settings-field">
-      <label class="settings-label">Sexe</label>
+      <label class="settings-label">Sex</label>
       <div class="seg-toggle">
-        <button id="sexMaleBtn" class="active" type="button">Homme</button>
-        <button id="sexFemaleBtn" type="button">Femme</button>
+        <button id="sexMaleBtn" class="active" type="button">Male</button>
+        <button id="sexFemaleBtn" type="button">Female</button>
       </div>
     </div>
 
-    <!-- Heures actives -->
+    <!-- Active hours -->
     <div class="settings-field">
-      <label class="settings-label">Heures actives / semaine</label>
+      <label class="settings-label">Active hours / week</label>
       <div class="settings-row">
         <input class="settings-input" id="activeHrs" type="number"
                min="0" max="40" step="0.5" placeholder="5" inputmode="decimal" style="max-width:120px">
-        <span class="settings-unit">h</span>
+        <span class="settings-unit">hrs</span>
       </div>
     </div>
 
-    <button class="settings-save" id="settingsSave" type="button">Enregistrer</button>
+    <button class="settings-save" id="settingsSave" type="button">Save</button>
 
     <div class="settings-divider"></div>
 
-    <!-- Carte WHOOP -->
+    <!-- WHOOP card -->
     <div class="whoop-card">
       <div class="whoop-header">
         <span class="whoop-dot" id="whoopDot"></span>
         <span class="whoop-name">WHOOP</span>
-        <span class="whoop-conn-status" id="whoopConnStatus">Non connecté</span>
+        <span class="whoop-conn-status" id="whoopConnStatus">Not connected</span>
       </div>
 
-      <!-- État connecté -->
+      <!-- Connected state -->
       <div id="whoopConnectedBlock" style="display:none">
-        <div class="whoop-sync-time" id="whoopSyncTime">Dernière synchro —</div>
+        <div class="whoop-sync-time" id="whoopSyncTime">Last synced —</div>
         <div class="whoop-stats">
           <div class="whoop-stat">
             <div class="whoop-stat-num" id="whoopRecovery">—</div>
-            <div class="whoop-stat-label">Récupération</div>
+            <div class="whoop-stat-label">Recovery</div>
           </div>
           <div class="whoop-stat">
             <div class="whoop-stat-num" id="whoopSleep">—</div>
-            <div class="whoop-stat-label">Sommeil</div>
+            <div class="whoop-stat-label">Sleep</div>
           </div>
           <div class="whoop-stat">
             <div class="whoop-stat-num" id="whoopHR">—</div>
-            <div class="whoop-stat-label">FC repos</div>
+            <div class="whoop-stat-label">Rest HR</div>
           </div>
         </div>
-        <button class="whoop-ghost" id="whoopSyncBtn" type="button">Synchroniser</button>
+        <button class="whoop-ghost" id="whoopSyncBtn" type="button">Sync now</button>
       </div>
 
-      <!-- État non connecté -->
+      <!-- Not connected state -->
       <div id="whoopNotConnectedBlock">
-        <a class="whoop-ghost" href="health.html" style="margin-top:12px">Se connecter sur la page Santé</a>
+        <a class="whoop-ghost" href="health.html" style="margin-top:12px">Connect on Health page</a>
       </div>
     </div>
 
@@ -567,7 +567,7 @@ body::after {
 (function () {
   'use strict';
 
-  /* ---- helpers stockage ---- */
+  /* ---- storage helpers ---- */
   function loadWater() {
     try { return JSON.parse(localStorage.getItem('po_water_v1')) || {}; } catch (e) { return {}; }
   }
@@ -579,7 +579,7 @@ body::after {
     try { return JSON.parse(localStorage.getItem('whoop_last_data')) || {}; } catch (e) { return {}; }
   }
 
-  /* ---- conversions d'unités ---- */
+  /* ---- unit math ---- */
   function cmToFtIn(cm) {
     const totalIn = cm / 2.54;
     return { ft: Math.floor(totalIn / 12), inches: Math.round(totalIn % 12) };
@@ -588,7 +588,7 @@ body::after {
   function kgToLb(kg) { return Math.round(kg * 2.20462 * 10) / 10; }
   function lbToKg(lb) { return Math.round(lb / 2.20462 * 10) / 10; }
 
-  /* ---- références DOM ---- */
+  /* ---- element refs ---- */
   const bg           = document.getElementById('settingsBg');
   const gearBtn      = document.getElementById('gearBtn');
   const closeBtn     = document.getElementById('settingsClose');
@@ -622,12 +622,12 @@ body::after {
   const whoopHREl          = document.getElementById('whoopHR');
   const whoopSyncBtn       = document.getElementById('whoopSyncBtn');
 
-  /* ---- état local des unités ---- */
+  /* ---- local unit state ---- */
   let heightUnit = 'cm';
   let weightUnit = 'kg';
   let sex = 'm';
 
-  /* ---- affichage des unités de taille ---- */
+  /* ---- show/hide height unit ---- */
   function setHeightUnit(unit) {
     heightUnit = unit;
     heightCmWrap.style.display = unit === 'cm' ? 'flex' : 'none';
@@ -647,7 +647,7 @@ body::after {
     sexFemaleBtn.classList.toggle('active', s === 'f');
   }
 
-  /* ---- bascule d'unités (conversion en place) ---- */
+  /* ---- unit toggle handlers (convert in place) ---- */
   heightCmBtn.addEventListener('click', function () {
     if (heightUnit === 'cm') return;
     const cm = ftInToCm(parseFloat(heightFtInp.value) || 0, parseFloat(heightInInp.value) || 0);
@@ -674,7 +674,7 @@ body::after {
   sexMaleBtn.addEventListener('click', function () { setSex('m'); });
   sexFemaleBtn.addEventListener('click', function () { setSex('f'); });
 
-  /* ---- pré-remplissage depuis po_water_v1 ---- */
+  /* ---- prefill from po_water_v1 ---- */
   function prefill() {
     const w = loadWater();
     const p = w.profile || {};
@@ -700,19 +700,19 @@ body::after {
     activeInp.value = p.activityHrsPerWeek != null ? p.activityHrsPerWeek : '';
   }
 
-  /* ---- enregistrement ---- */
+  /* ---- save ---- */
   saveBtn.addEventListener('click', function () {
     const w = loadWater();
     if (!w.profile) w.profile = {};
     if (!w.logs)    w.logs    = {};
 
-    // taille → toujours stocker en cm
+    // height → always store in cm
     w.profile.heightCm = heightUnit === 'ft'
       ? ftInToCm(parseFloat(heightFtInp.value) || 0, parseFloat(heightInInp.value) || 0)
       : (parseFloat(heightCmInp.value) || 0);
     w.profile.heightUnit = heightUnit;
 
-    // poids → toujours stocker en kg
+    // weight → always store in kg
     const wVal = parseFloat(weightInp.value) || 0;
     w.profile.weightKg = weightUnit === 'lb' ? lbToKg(wVal) : wVal;
     w.weightUnit = weightUnit;
@@ -723,22 +723,22 @@ body::after {
 
     saveWater(w);
 
-    saveBtn.textContent = 'Enregistré ✓';
+    saveBtn.textContent = 'Saved ✓';
     saveBtn.classList.add('saved');
     setTimeout(function () {
-      saveBtn.textContent = 'Enregistrer';
+      saveBtn.textContent = 'Save';
       saveBtn.classList.remove('saved');
     }, 1800);
   });
 
-  /* ---- WHOOP ---- */
+  /* ---- WHOOP helpers ---- */
   function fmtAgo(ts) {
-    if (!ts) return 'jamais';
+    if (!ts) return 'never';
     const mins = Math.round((Date.now() - ts) / 60000);
-    if (mins < 1) return 'à l\'instant';
-    if (mins < 60) return mins + ' min';
+    if (mins < 1) return 'just now';
+    if (mins < 60) return mins + ' min ago';
     const h = Math.floor(mins / 60), m = mins % 60;
-    return h + 'h' + (m ? ' ' + m + 'm' : '');
+    return h + 'h' + (m ? ' ' + m + 'm' : '') + ' ago';
   }
 
   function renderWhoop() {
@@ -746,14 +746,14 @@ body::after {
     const connected = !!(tokens && (tokens.access_token || tokens.accessToken));
 
     whoopDot.classList.toggle('connected', connected);
-    whoopConnStatus.textContent = connected ? 'Connecté' : 'Non connecté';
+    whoopConnStatus.textContent = connected ? 'Connected' : 'Not connected';
     whoopConnectedBlk.style.display  = connected ? '' : 'none';
     whoopNotConnBlk.style.display    = connected ? 'none' : '';
 
     if (!connected) return;
 
     const lastSync = localStorage.getItem('whoop_last_sync');
-    whoopSyncTime.textContent = 'Dernière synchro ' + fmtAgo(lastSync ? parseInt(lastSync, 10) : null);
+    whoopSyncTime.textContent = 'Last synced ' + fmtAgo(lastSync ? parseInt(lastSync, 10) : null);
 
     const d = loadWhoopData();
     whoopRecoveryEl.textContent = d.recovery != null ? d.recovery + '%' : '—';
@@ -763,7 +763,7 @@ body::after {
 
   async function whoopSync() {
     whoopSyncBtn.disabled = true;
-    whoopSyncBtn.textContent = 'Synchro…';
+    whoopSyncBtn.textContent = 'Syncing…';
     try {
       let res = await fetch('/api/whoop-data');
       if (res.status === 401) {
@@ -780,25 +780,26 @@ body::after {
       localStorage.setItem('whoop_last_sync', Date.now().toString());
       renderWhoop();
     } catch (e) {
-      whoopSyncBtn.textContent = 'Échec — réessayer';
+      whoopSyncBtn.textContent = 'Sync failed — retry';
       setTimeout(function () {
-        whoopSyncBtn.textContent = 'Synchroniser';
+        whoopSyncBtn.textContent = 'Sync now';
         whoopSyncBtn.disabled = false;
       }, 2500);
       return;
     }
-    whoopSyncBtn.textContent = 'Synchroniser';
+    whoopSyncBtn.textContent = 'Sync now';
     whoopSyncBtn.disabled = false;
   }
 
   whoopSyncBtn.addEventListener('click', whoopSync);
 
-  /* ---- ouverture / fermeture ---- */
+  /* ---- open / close ---- */
   function openModal() {
     prefill();
     renderWhoop();
     bg.classList.add('show');
     document.body.classList.add('topbar-modal-open');
+    // auto-sync if connected
     const tokens = loadWhoopTokens();
     if (tokens && (tokens.access_token || tokens.accessToken)) whoopSync();
   }

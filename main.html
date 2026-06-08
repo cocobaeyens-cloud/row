@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -603,11 +603,11 @@ body::after {
   <div class="ticker-row">
     <div class="goal-ticker" id="goalTicker" aria-live="polite" aria-atomic="true">
       <div class="goal-ticker-led"><span class="goal-ticker-led-dot"></span></div>
-      <div class="goal-ticker-label">OBJECTIFS</div>
+      <div class="goal-ticker-label">GOALS</div>
       <div class="goal-ticker-stage" id="goalTickerStage">
         <div class="goal-ticker-row">
           <span class="goal-ticker-status" data-status="">—</span>
-          <span class="goal-ticker-text">Chargement…</span>
+          <span class="goal-ticker-text">Loading…</span>
         </div>
       </div>
       <div class="goal-ticker-meta" id="goalTickerMeta">0/0</div>
@@ -633,59 +633,59 @@ body::after {
       </div>
     </div>
     <div class="day-ring-text">
-      <div class="day-ring-status"    id="dayRingStatus">Chargement…</div>
+      <div class="day-ring-status"    id="dayRingStatus">Loading…</div>
       <div class="day-ring-remaining" id="dayRingRemaining">—</div>
-      <div class="day-ring-hours">8h00 – 0h00</div>
+      <div class="day-ring-hours">8:00 AM – 12:00 AM</div>
     </div>
   </div>
 
   <div class="section">
-    <div class="section-title">Liste de tâches</div>
+    <div class="section-title">To Do List</div>
 
-    <!-- AUJOURD'HUI -->
+    <!-- TODAY -->
     <div class="gm-card" id="gmCardToday">
       <div class="gm-header">
         <div class="gm-header-left">
-          <div class="gm-eyebrow" id="todayLabel">Aujourd'hui —</div>
+          <div class="gm-eyebrow" id="todayLabel">Today —</div>
           <div class="gm-progress-row">
             <span class="gm-progress-num"   id="gmProgressNum">0</span>
             <span class="gm-progress-total" id="gmProgressTotal">/ 0</span>
-            <span class="gm-progress-label" id="gmProgressLabel">pas encore d'objectifs</span>
+            <span class="gm-progress-label" id="gmProgressLabel">no goals yet</span>
           </div>
         </div>
         <div class="gm-streak" id="gmStreak">
           <span class="gm-streak-icon">⚡</span>
           <span class="gm-streak-num" id="gmStreakNum">0</span>
-          <span>jours d'affilée</span>
+          <span>day streak</span>
         </div>
       </div>
       <div class="gm-bar" id="gmBar"></div>
       <ul id="goalList" class="goal-list gm-list"></ul>
-      <div id="emptyState" class="empty-state">Pas encore d'objectifs — ajoutez-en un.</div>
-      <button type="button" id="gmPushBtn" class="gm-push-btn" style="display:none;">Reporter à demain</button>
+      <div id="emptyState" class="empty-state">No goals for today yet — add one below.</div>
+      <button type="button" id="gmPushBtn" class="gm-push-btn" style="display:none;">Push remaining to tomorrow</button>
       <div class="goal-input-wrap gm-input-wrap">
-        <input id="goalInput" class="gm-input" type="text" placeholder="Ajouter un objectif pour aujourd'hui…" autocomplete="off">
-        <button type="button" id="goalAddBtn"    class="gm-add">+ Ajouter</button>
-        <button type="button" id="goalPolishBtn" class="gm-polish">✨ Peaufiner</button>
+        <input id="goalInput" class="gm-input" type="text" placeholder="Add a goal for today…" autocomplete="off">
+        <button type="button" id="goalAddBtn"    class="gm-add">+ Add</button>
+        <button type="button" id="goalPolishBtn" class="gm-polish">✨ Polish</button>
         <div class="gm-status" id="polishStatus"></div>
       </div>
     </div>
 
-    <!-- PLANIFIER DEMAIN -->
+    <!-- PLAN TOMORROW -->
     <div class="gm-card gm-card-tomorrow" id="gmCardTomorrow">
       <div class="gm-header">
         <div class="gm-header-left">
-          <div class="gm-eyebrow" id="tomorrowLabel">Planifier demain —</div>
-          <div class="gm-tomorrow-sub">À remplir ce soir, verrouillé jusqu'à 6h.</div>
+          <div class="gm-eyebrow" id="tomorrowLabel">Plan tomorrow —</div>
+          <div class="gm-tomorrow-sub">Write tonight, locked until 6 AM.</div>
         </div>
-        <div class="gm-tomorrow-count" id="gmTomorrowCount">0 planifié</div>
+        <div class="gm-tomorrow-count" id="gmTomorrowCount">0 planned</div>
       </div>
       <ul id="tomorrowList" class="goal-list gm-list"></ul>
-      <div id="tomorrowEmpty" class="empty-state">Rien de planifié pour demain</div>
+      <div id="tomorrowEmpty" class="empty-state">Nothing planned for tomorrow yet</div>
       <div class="goal-input-wrap gm-input-wrap">
-        <input id="tomorrowInput" class="gm-input" type="text" placeholder="Ajouter un objectif pour demain…" autocomplete="off">
-        <button type="button" id="tomorrowAddBtn"    class="gm-add">+ Ajouter</button>
-        <button type="button" id="tomorrowPolishBtn" class="gm-polish">✨ Peaufiner</button>
+        <input id="tomorrowInput" class="gm-input" type="text" placeholder="Add a goal for tomorrow…" autocomplete="off">
+        <button type="button" id="tomorrowAddBtn"    class="gm-add">+ Add</button>
+        <button type="button" id="tomorrowPolishBtn" class="gm-polish">✨ Polish</button>
         <div class="gm-status" id="tomorrowStatus"></div>
       </div>
     </div>
@@ -744,8 +744,8 @@ body::after {
   function formatDate(yyyy_mm_dd) {
     const parts = yyyy_mm_dd.split('-').map(Number);
     const d = new Date(parts[0], parts[1] - 1, parts[2]);
-    const wk = ['Dim','Lun','Mar','Mer','Jeu','Ven','Sam'][d.getDay()];
-    const mo = ['Jan','Fév','Mar','Avr','Mai','Juin','Juil','Aoû','Sep','Oct','Nov','Déc'][d.getMonth()];
+    const wk = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'][d.getDay()];
+    const mo = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][d.getMonth()];
     return wk + ', ' + mo + ' ' + d.getDate();
   }
 
@@ -816,8 +816,8 @@ body::after {
     const goals = getGoals(todayKey());
     const total = goals.length;
     const done  = goals.filter(g => g.done).length;
-    if (total === 0) return { items: [{ status: 'empty',   text: 'Pas d\'objectifs pour aujourd\'hui — ajoutez-en un.' }], done, total };
-    if (done === total) return { items: [{ status: 'done', text: '✓ Tous les objectifs faits — belle journée !' }], done, total };
+    if (total === 0) return { items: [{ status: 'empty',   text: 'No goals set for today — add one to get rolling.' }], done, total };
+    if (done === total) return { items: [{ status: 'done', text: '✓ All goals done — solid day.' }], done, total };
     const items = goals.filter(g => !g.done).map(g => ({ status: 'pending', text: g.text }));
     return { items, done, total };
   }
@@ -934,10 +934,10 @@ body::after {
       fillEl.setAttribute('stroke-dashoffset', C);
       fillEl.style.stroke = '#4D4B47';
       percentEl.textContent = '—';
-      phaseEl.textContent   = 'SOMMEIL';
-      statusEl.textContent  = '😴 Encore endormi';
+      phaseEl.textContent   = 'SLEEPING';
+      statusEl.textContent  = '😴 Still sleeping';
       const minsUntil = (WAKE_HOUR - hours) * 60;
-      remainingEl.textContent = formatRemaining(minsUntil) + ' avant le réveil';
+      remainingEl.textContent = formatRemaining(minsUntil) + ' until wake-up';
       return;
     }
 
@@ -945,9 +945,9 @@ body::after {
       fillEl.setAttribute('stroke-dashoffset', 0);
       fillEl.style.stroke = '#E25D7A';
       percentEl.textContent = '100%';
-      phaseEl.textContent   = 'APRÈS MINUIT';
-      statusEl.textContent  = '⚠️ Après minuit';
-      remainingEl.textContent = 'Au lit !';
+      phaseEl.textContent   = 'PAST BEDTIME';
+      statusEl.textContent  = '⚠️ Past bedtime';
+      remainingEl.textContent = 'Sleep!';
       return;
     }
 
@@ -958,16 +958,16 @@ body::after {
     percentEl.textContent = Math.floor(percent) + '%';
 
     let phase, status;
-    if (percent < 25)      { phase = 'MATIN';      status = '☀️ Matin — bon départ'; }
-    else if (percent < 50) { phase = 'MIDI';       status = '⚡ Midi — en avant'; }
-    else if (percent < 75) { phase = 'APRÈS-MIDI'; status = '🔥 Après-midi — pousse-toi'; }
-    else if (percent < 90) { phase = 'SOIRÉE';     status = '⏳ Soirée — finalise'; }
-    else                   { phase = 'COUCHER';    status = '🌙 Bientôt l\'heure de dormir'; }
+    if (percent < 25)      { phase = 'MORNING';   status = '☀️ Morning — fresh start'; }
+    else if (percent < 50) { phase = 'MIDDAY';    status = '⚡ Midday — keep moving'; }
+    else if (percent < 75) { phase = 'AFTERNOON'; status = '🔥 Afternoon — push it'; }
+    else if (percent < 90) { phase = 'EVENING';   status = '⏳ Evening — wrap up'; }
+    else                   { phase = 'BEDTIME';   status = '🌙 Bedtime soon'; }
     phaseEl.textContent  = phase;
     statusEl.textContent = status;
 
     const minsLeft = (SLEEP_HOUR - hours) * 60;
-    remainingEl.textContent = formatRemaining(minsLeft) + ' Temps éveillé restant';
+    remainingEl.textContent = formatRemaining(minsLeft) + ' awake time left';
   }
 
   // ---------- Row building ----------
@@ -1047,7 +1047,7 @@ body::after {
     cb.type = 'checkbox';
     cb.className = 'gm-check';
     cb.checked = !!goal.done;
-    if (readOnly) { cb.disabled = true; cb.title = 'Actif à 6h demain'; }
+    if (readOnly) { cb.disabled = true; cb.title = 'Activates at 6 AM tomorrow'; }
     cb.addEventListener('change', () => {
       const list = getGoals(key);
       if (!list[idx]) return;
@@ -1069,7 +1069,7 @@ body::after {
     queueBtn.type = 'button';
     queueBtn.className = 'gm-queue-btn' + (goal.queued ? ' gm-queue-active' : '');
     queueBtn.textContent = '⚡';
-    queueBtn.title = 'File d\'attente de productivité';
+    queueBtn.title = 'Queue for productivity window';
     if (readOnly) queueBtn.disabled = true;
     queueBtn.addEventListener('click', () => {
       const list = getGoals(key);
@@ -1084,7 +1084,7 @@ body::after {
     const del = document.createElement('button');
     del.type = 'button';
     del.className = 'goal-delete';
-    del.setAttribute('aria-label', 'Supprimer');
+    del.setAttribute('aria-label', 'Delete goal');
     del.textContent = '×';
     del.addEventListener('click', () => {
       const list = getGoals(key);
@@ -1106,9 +1106,9 @@ body::after {
     document.getElementById('gmProgressNum').textContent   = done;
     document.getElementById('gmProgressTotal').textContent = '/ ' + total;
     const label = document.getElementById('gmProgressLabel');
-    if (total === 0)        label.textContent = 'pas encore d\'objectifs';
-    else if (done === total) label.textContent = 'tout fait !';
-    else                     label.textContent = 'terminé';
+    if (total === 0)        label.textContent = 'no goals yet';
+    else if (done === total) label.textContent = 'all done — solid day';
+    else                     label.textContent = 'complete';
 
     document.getElementById('todayLabel').textContent =
       'Today — ' + formatDate(getActiveDateString());
@@ -1136,7 +1136,7 @@ body::after {
 
   function renderTomorrowCount() {
     const list = getGoals(tomorrowKey());
-    document.getElementById('gmTomorrowCount').textContent = list.length + ' planifié';
+    document.getElementById('gmTomorrowCount').textContent = list.length + ' planned';
     document.getElementById('tomorrowLabel').textContent =
       'Plan tomorrow — ' + formatDate(getTomorrowDateString());
   }
@@ -1155,7 +1155,7 @@ body::after {
       toggle.type = 'button';
       toggle.className = 'gm-show-toggle';
       const updateLabel = () => {
-        toggle.textContent = expanded ? 'Afficher moins ▴' : ('Afficher ' + (goals.length - 5) + ' de plus ▾');
+        toggle.textContent = expanded ? 'Show less ▴' : ('Show ' + (goals.length - 5) + ' more ▾');
       };
       updateLabel();
       toggle.addEventListener('click', () => {
@@ -1191,7 +1191,7 @@ body::after {
     const today    = getGoals(todayKey());
     const remaining = today.filter(g => !g.done);
     if (remaining.length === 0) return;
-    if (!confirm('Déplacer ' + remaining.length + ' objectif' + (remaining.length === 1 ? '' : 's') + ' non coché' + (remaining.length === 1 ? '' : 's') + ' à demain ?')) return;
+    if (!confirm('Move ' + remaining.length + ' unchecked goal' + (remaining.length === 1 ? '' : 's') + ' to tomorrow?')) return;
     const tomorrow = getGoals(tomorrowKey());
     const seen = new Set(tomorrow.map(g => g.text));
     remaining.forEach(g => {
@@ -1258,7 +1258,7 @@ body::after {
       if (!text) return;
       if (!ANTHROPIC_API_KEY) {
         plainAdd(text);
-        showStatus(statusEl, 'Peaufiner nécessite une clé API — ajouté tel quel.', false);
+        showStatus(statusEl, 'Polish needs an Anthropic API key — added as-typed.', false);
         return;
       }
       polishBtn.disabled = true;
@@ -1267,7 +1267,7 @@ body::after {
         plainAdd(polished);
       } catch (e) {
         plainAdd(text);
-        showStatus(statusEl, 'Échec — ajouté tel quel.', true);
+        showStatus(statusEl, 'Polish failed — added as-typed.', true);
       } finally {
         polishBtn.disabled = false;
       }
